@@ -47,14 +47,12 @@
   ([addr ^String charset]
    (if (instance? InternetAddress addr)
      addr
-     (when-let [^InternetAddress a (try (InternetAddress. addr)
-                                        (catch Exception _))]
+     (let [^InternetAddress a  (InternetAddress. addr)]
        (InternetAddress. (.getAddress a)
                          (.getPersonal a)
                          charset))))
   ([^String addr ^String name-str ^String charset]
-   (try (InternetAddress. addr name-str charset)
-        (catch Exception _))))
+   (InternetAddress. addr name-str charset)))
 
 (defn make-addresses [addresses charset]
   (if (string? addresses)
@@ -85,9 +83,9 @@
     (cond
       (sequential? addrs)
       (doseq [addr addrs]
-        (add-recipient! jmsg rtype addr charset)))
-    :otherwise
-      (add-recipient! jmsg rtype addrs charset))
+        (add-recipient! jmsg rtype addr charset))
+      :else
+      (add-recipient! jmsg rtype addrs charset)))
   jmsg)
 
 (declare eval-bodypart eval-multipart)

@@ -203,13 +203,13 @@
     (is (.contains (message->str m) "User-Agent: Lorem Ipsum"))))
 
 (deftest test-bad-addrs
-  (let [m (message->str
-           {:from "foo @bar.dom"
-            :to "badddz@@@bar.dom"
-            :subject "Test"
-            :body "Bad recipient!"})]
-    (is (not (.contains m "badddz")))
-    (is (not (.contains m "foo @bar")))))
+  (is (thrown?
+       javax.mail.internet.AddressException
+       (message->str
+        {:from "foo @bar.dom"
+         :to "badddz@@@bar.dom"
+         :subject "Test"
+         :body "Bad recipient!"}))))
 
 (deftest test-reply-to
   (let [m {:from "foo@bar.dom"
