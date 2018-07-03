@@ -22,8 +22,8 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.smtp
-  (:use [postal.message :only [make-jmessage]]
-        [postal.support :only [make-props]])
+  (:require [postal.message :refer [make-jmessage]]
+            [postal.support :refer [make-props]])
   (:import [javax.mail Transport Session]))
 
 (defn get-session [server]

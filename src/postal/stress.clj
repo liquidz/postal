@@ -25,8 +25,8 @@
   (:import [java.util Date]
            [java.text SimpleDateFormat]
            [java.util.concurrent CountDownLatch])
-  (:use [postal.smtp :only [smtp-send]]
-        [postal.message :only [make-fixture]]))
+  (:require [postal.smtp :refer [smtp-send]]
+            [postal.message :refer [make-fixture]]))
 
 (def ^SimpleDateFormat DATEFORMAT (SimpleDateFormat. "yyyy-MM-dd.HH:mm:ss"))
 

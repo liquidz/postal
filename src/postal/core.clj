@@ -22,9 +22,9 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.core
-  (:use [postal.sendmail :only [sendmail-send]]
-        [postal.smtp :only [smtp-send]]
-        [postal.stress :only [spam]]))
+  (:require [postal.sendmail :refer [sendmail-send]]
+            [postal.smtp :refer [smtp-send]]
+            [postal.stress :refer [spam]]))
 
 (defn send-message
   ([{:keys [host] :as server}

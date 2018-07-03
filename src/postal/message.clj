@@ -22,10 +22,10 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.message
-  (:use [clojure.set :only [difference]]
-        [clojure.java.io :only [as-url as-file]]
-        [postal.date :only [make-date]]
-        [postal.support :only [do-when make-props message-id user-agent]])
+  (:require [clojure.set :refer [difference]]
+            [clojure.java.io :refer [as-url as-file]]
+            [postal.date :refer [make-date]]
+            [postal.support :refer [do-when make-props message-id user-agent]])
   (:import [java.util UUID]
            [java.net MalformedURLException]
            [javax.activation DataHandler]
