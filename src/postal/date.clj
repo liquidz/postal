@@ -22,8 +22,8 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.date
-  (:import [java.util Date]
-           [java.text SimpleDateFormat ParsePosition]))
+  (:import [java.text ParsePosition SimpleDateFormat]
+           java.util.Date))
 
 (defn make-date
   ([tmpl s]

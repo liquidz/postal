@@ -22,11 +22,11 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.stress
-  (:import [java.util Date]
-           [java.text SimpleDateFormat]
-           [java.util.concurrent CountDownLatch])
-  (:require [postal.smtp :refer [smtp-send]]
-            [postal.message :refer [make-fixture]]))
+  (:require [postal.message :refer [make-fixture]]
+            [postal.smtp :refer [smtp-send]])
+  (:import java.text.SimpleDateFormat
+           java.util.concurrent.CountDownLatch
+           java.util.Date))
 
 (def ^SimpleDateFormat DATEFORMAT (SimpleDateFormat. "yyyy-MM-dd.HH:mm:ss"))
 

@@ -23,8 +23,8 @@
 
 (ns postal.support
   (:require [clojure.java.io :as io])
-  (:import (java.util Properties Random)
-           (org.apache.commons.codec.binary Base64)))
+  (:import [java.util Properties Random]
+           org.apache.commons.codec.binary.Base64))
 
 (def boolean-props
   #{:allow8bitmime

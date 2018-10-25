@@ -24,7 +24,7 @@
 (ns postal.smtp
   (:require [postal.message :refer [make-jmessage]]
             [postal.support :refer [make-props]])
-  (:import [javax.mail Transport Session]))
+  (:import [javax.mail Session Transport]))
 
 (defn get-session [server]
   (let [{:keys [sender debug]} server]

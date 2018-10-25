@@ -22,15 +22,11 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.test.message
-  (:use [postal.message]
-        [clojure.test :only [run-tests deftest is]]
-        [clojure.java.io :as io]
-        [postal.date :only [make-date]])
-  (:import [java.util Properties UUID]
-           [javax.mail Session Message$RecipientType]
-           [javax.mail.internet MimeMessage InternetAddress
-            AddressException]
-           [java.util.zip ZipOutputStream ZipEntry]))
+  (:require [clojure.java.io :as io :refer :all]
+            [clojure.test :refer :all]
+            [postal.message :refer :all])
+  (:import [java.util.zip ZipEntry ZipOutputStream]
+           javax.mail.internet.AddressException))
 
 (deftest test-simple
   (let [m (message->str

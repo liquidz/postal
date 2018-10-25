@@ -22,7 +22,7 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.sendmail
-  (:use [postal.message :only [message->str sender recipients]]))
+  (:require [postal.message :refer :all]))
 
 (def sendmails ["/usr/lib/sendmail"
                 "/usr/sbin/sendmail"
