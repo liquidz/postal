@@ -22,14 +22,8 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.test.stress
-  (:import [java.util Date]
-           [java.text SimpleDateFormat]
-           [java.util.concurrent CountDownLatch])
-  (:use [clojure.test]
-        [postal.stress]
-        [postal.smtp :only [smtp-send]]
-        [postal.message :only [make-fixture]]))
-
+  (:require [clojure.test :refer :all]
+            [postal.stress :refer :all]))
 
 (deftest test-partition-work
   (is (= [5 5] (partition-work 10 2)))

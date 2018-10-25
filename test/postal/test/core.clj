@@ -22,10 +22,10 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.test.core
-  (:require [postal.core :as postal]
+  (:require [clojure.test :refer :all]
+            [postal.core :as postal]
             [postal.sendmail :as local]
-            [postal.smtp :as smtp])
-  (:use [clojure.test]))
+            [postal.smtp :as smtp]))
 
 (defn sendmail-send [msg]
   (merge {:which :sendmail} msg (meta msg)))

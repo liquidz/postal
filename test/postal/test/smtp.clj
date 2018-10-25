@@ -22,8 +22,8 @@
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
 (ns postal.test.smtp
-  (:use [clojure.test])
-  (:require [postal.smtp :as smtp] :reload))
+  (:require [clojure.test :refer :all]
+            [postal.smtp :as smtp]))
 
 (defn props [attrs]
   (let [msg {:from "foo@bar.dom"
