@@ -69,7 +69,7 @@
     (is (.contains m "<html></html>"))))
 
 (deftest test-inline
-  (let [f (doto (java.io.File/createTempFile "_postal-" ".txt"))
+  (let [f (java.io.File/createTempFile "_postal-" ".txt")
         _ (doto (java.io.PrintWriter. f)
             (.println "tempfile contents") (.close))
         m (message->str
@@ -82,7 +82,7 @@
     (.delete f)))
 
 (deftest test-attachment
-  (let [f1 (doto (java.io.File/createTempFile "_postal-" ".txt"))
+  (let [f1 (java.io.File/createTempFile "_postal-" ".txt")
         _ (doto (java.io.PrintWriter. f1)
             (.println "tempfile contents") (.close))
         f2 "/etc/resolv.conf"
@@ -101,7 +101,7 @@
     (.delete f1)))
 
 (deftest test-attachments-from-url
-  (let [jar (doto (java.io.File/createTempFile "_postal-" ".jar"))
+  (let [jar (java.io.File/createTempFile "_postal-" ".jar")
         _ (with-open [zip-out (ZipOutputStream. (io/output-stream jar))
                       zip-w (writer zip-out)]
             (.putNextEntry zip-out (ZipEntry. "test-directory/test-filename.txt"))
@@ -125,7 +125,7 @@
     (.delete jar)))
 
 (deftest test-attachment-with-custom-name-and-description
-  (let [f1 (doto (java.io.File/createTempFile "_postal-" ".txt"))
+  (let [f1 (java.io.File/createTempFile "_postal-" ".txt")
         _ (doto (java.io.PrintWriter. f1)
             (.println "tempfile contents") (.close))
         m (message->str
@@ -144,7 +144,7 @@
     (.delete f1)))
 
 (deftest test-attachment-with-unicode-name
-  (let [f1 (doto (java.io.File/createTempFile "_postal-" ".txt"))
+  (let [f1 (java.io.File/createTempFile "_postal-" ".txt")
         _ (doto (java.io.PrintWriter. f1)
             (.println "tempfile contents") (.close))
         m (message->str
@@ -161,7 +161,7 @@
     (.delete f1)))
 
 (deftest test-nested
-  (let [f (doto (java.io.File/createTempFile "_postal-" ".txt"))
+  (let [f (java.io.File/createTempFile "_postal-" ".txt")
         _ (doto (java.io.PrintWriter. f)
             (.println "tempfile contents") (.close))
         m (message->str
