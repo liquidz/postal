@@ -86,7 +86,7 @@
      (format "<%s.%s@%s>" onlychars epoch host))))
 
 (defn pom-version []
-  (let [pom "META-INF/maven/com.draines/postal/pom.properties"
+  (let [pom "META-INF/maven/liquidz/postal/pom.properties"
         props (doto (Properties.)
                 (.load (-> pom io/resource io/input-stream)))]
     (.getProperty props "version")))
