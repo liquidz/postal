@@ -27,6 +27,6 @@
 
 (defn make-date
   ([tmpl s]
-     (.parse (SimpleDateFormat. tmpl) s (ParsePosition. 0)))
+   (.parse (SimpleDateFormat. tmpl) s (ParsePosition. 0)))
   ([]
-     (Date.)))
+   (Date.)))

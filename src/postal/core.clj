@@ -29,14 +29,14 @@
 (defn send-message
   ([{:keys [host] :as server}
     {:keys [from to bcc subject body] :or {to "" subject ""} :as msg}]
-     (when-not (or (and from to)
-                   (and from bcc))
-       (throw (Exception. "message needs at least :from and :to or :from and :bcc")))
-     (if host
-       (smtp-send server msg)
-       (sendmail-send msg)))
+   (when-not (or (and from to)
+                 (and from bcc))
+     (throw (Exception. "message needs at least :from and :to or :from and :bcc")))
+   (if host
+     (smtp-send server msg)
+     (sendmail-send msg)))
   ([msg]
-     (send-message (meta msg) msg)))
+   (send-message (meta msg) msg)))
 
 (defn stress [profile]
   (let [defaults #^{:host "localhost"
@@ -44,8 +44,8 @@
                     :num 1
                     :delay 100
                     :threads 1}
-        {:from "foo@lolz.dom"
-         :to "bar@lolz.dom"}
+                   {:from "foo@lolz.dom"
+                    :to "bar@lolz.dom"}
         {:keys [host port from to num delay threads]}
         (merge (meta defaults) defaults (meta profile) profile)]
     (println (format "sent %s msgs to %s:%s"

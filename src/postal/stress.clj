@@ -63,24 +63,24 @@
 
 (defn spam
   ([host port from to n]
-     (spam host port from to n 0))
+   (spam host port from to n 0))
   ([host port from to n delay]
-     (log (format "(thread: %s) %s msgs -> %s"
-                  (-> (Thread/currentThread) .getId)
-                  n host))
-     (let [date (.format DATEFORMAT (Date.))]
-       (dotimes [x n]
-         (smtp-send host port (make-fixture from to))
-         (swap! counter inc)
-         (Thread/sleep delay))
-       n))
+   (log (format "(thread: %s) %s msgs -> %s"
+                (-> (Thread/currentThread) .getId)
+                n host))
+   (let [date (.format DATEFORMAT (Date.))]
+     (dotimes [x n]
+       (smtp-send host port (make-fixture from to))
+       (swap! counter inc)
+       (Thread/sleep delay))
+     n))
   ([host port from to n delay threads]
-     (let [latch (CountDownLatch. threads)
-           res (doall
-                (map #(future
-                        (let [ct (spam host port from to % delay)]
-                          (.countDown latch)
-                          ct))
-                     (partition-work n threads)))]
-       (.await latch)
-       (reduce #(+ %1 (deref %2)) 0 res))))
+   (let [latch (CountDownLatch. threads)
+         res (doall
+              (map #(future
+                      (let [ct (spam host port from to % delay)]
+                        (.countDown latch)
+                        ct))
+                   (partition-work n threads)))]
+     (.await latch)
+     (reduce #(+ %1 (deref %2)) 0 res))))

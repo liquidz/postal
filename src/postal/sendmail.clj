@@ -65,16 +65,16 @@
 
 (defn sendmail-send
   ([msg]
-     (sendmail-send msg (find-sendmail)))
+   (sendmail-send msg (find-sendmail)))
   ([msg sendmail]
-      (let [mail (sanitize (message->str msg))
-            cmd (concat
-                 [sendmail "-f" (sender msg)]
-                 (recipients msg))
-            pb (ProcessBuilder. ^java.util.List cmd)
-            p (.start pb)
-            smtp (java.io.PrintStream. (.getOutputStream p))]
-        (.print smtp mail)
-        (.close smtp)
-        (.waitFor p)
-        (error (.exitValue p)))))
+   (let [mail (sanitize (message->str msg))
+         cmd (concat
+              [sendmail "-f" (sender msg)]
+              (recipients msg))
+         pb (ProcessBuilder. ^java.util.List cmd)
+         p (.start pb)
+         smtp (java.io.PrintStream. (.getOutputStream p))]
+     (.print smtp mail)
+     (.close smtp)
+     (.waitFor p)
+     (error (.exitValue p)))))

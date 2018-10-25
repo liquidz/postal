@@ -60,20 +60,20 @@
 
 (defn smtp-send
   ([msg]
-     (let [jmsg (make-jmessage msg)]
-       (try
-         (Transport/send jmsg)
-         {:code 0 :error :SUCCESS :message "message sent"}
-         (catch Exception e
-           {:code 99 :error (class e) :message (.getMessage e)}))))
+   (let [jmsg (make-jmessage msg)]
+     (try
+       (Transport/send jmsg)
+       {:code 0 :error :SUCCESS :message "message sent"}
+       (catch Exception e
+         {:code 99 :error (class e) :message (.getMessage e)}))))
   ([args & msgs]
-     (let [{:keys [host port ssl]
-            :or {host "localhost"}} args
-            port (if (nil? port)
-                   (if ssl 465 25)
-                   port)
-            proto (get-protocol args)
-            args (merge args {:port port
-                              :proto proto})
-            session (get-session args)]
-       (smtp-send* session proto args msgs))))
+   (let [{:keys [host port ssl]
+          :or {host "localhost"}} args
+         port (if (nil? port)
+                (if ssl 465 25)
+                port)
+         proto (get-protocol args)
+         args (merge args {:port port
+                           :proto proto})
+         session (get-session args)]
+     (smtp-send* session proto args msgs))))
