@@ -1,6 +1,8 @@
 postal
 =======
 
+[![CircleCI](https://circleci.com/gh/liquidz/postal.svg?style=svg)](https://circleci.com/gh/liquidz/postal)
+
 #### Internet email library for Clojure
 
 postal is a library for constructing and sending RFC822-compliant
