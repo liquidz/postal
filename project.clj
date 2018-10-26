@@ -10,4 +10,8 @@
                  [com.sun.mail/javax.mail "1.6.2"]
                  [javax.mail/javax.mail-api "1.6.2"]]
   :global-vars {*warn-on-reflection* true}
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.9.0"]]}})
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.9.0"]]}
+             :1.9 {:dependencies [[org.clojure/clojure "1.9.0"]]}
+             :1.10 {:dependencies [[org.clojure/clojure "1.10.0-beta4"]]}}
+  :aliases
+  {"test-all" ["with-profile" "1.9:1.10" "test"]})
