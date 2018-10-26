@@ -21,12 +21,5 @@
 ;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
-(ns postal.test.stress
-  (:require [clojure.test :refer :all]
-            [postal.stress :refer :all]))
+(ns postal.sendmail-test)
 
-(deftest test-partition-work
-  (is (= [5 5] (partition-work 10 2)))
-  (is (= [3 3 3 1] (partition-work 10 3)))
-  (is (= [111 111 111 111 111 111 111 111 111 111 3]
-         (partition-work 1113 10))))

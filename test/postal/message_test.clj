@@ -21,7 +21,7 @@
 ;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
-(ns postal.test.message
+(ns postal.message-test
   (:require [clojure.java.io :as io :refer :all]
             [clojure.test :refer :all]
             [postal.message :refer :all])

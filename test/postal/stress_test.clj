@@ -21,31 +21,12 @@
 ;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 ;; OTHER DEALINGS IN THE SOFTWARE.
 
-(ns postal.test.core
+(ns postal.stress-test
   (:require [clojure.test :refer :all]
-            [postal.core :as postal]
-            [postal.sendmail :as local]
-            [postal.smtp :as smtp]))
+            [postal.stress :refer :all]))
 
-(defn sendmail-send [msg]
-  (merge {:which :sendmail} msg (meta msg)))
-
-(defn smtp-send [server msg]
-  (merge {:which :smtp} server msg (meta msg)))
-
-(deftest integration
-  (with-redefs [local/sendmail-send sendmail-send
-                smtp/smtp-send smtp-send]
-    (is (= :smtp (:which
-                  (postal/send-message ^{:host "localhost"
-                                         :port "25"}
-                                       {:from "foo@example.com"
-                                        :to "bar@example.com"}))))
-    (is (= :smtp (:which
-                  (postal/send-message {:host "localhost"
-                                        :port "25"}
-                                       {:from "foo@example.com"
-                                        :to "bar@example.com"}))))
-    (is (= :sendmail (:which
-                      (postal/send-message {:from "foo@example.com"
-                                            :to "bar@example.com"}))))))
+(deftest test-partition-work
+  (is (= [5 5] (partition-work 10 2)))
+  (is (= [3 3 3 1] (partition-work 10 3)))
+  (is (= [111 111 111 111 111 111 111 111 111 111 3]
+         (partition-work 1113 10))))
