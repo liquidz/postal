@@ -1,4 +1,4 @@
-(defproject liquidz/postal "3.0.1-SNAPSHOT"
+(defproject liquidz/postal "3.0.2-SNAPSHOT"
   :description "JavaMail on Clojure"
   :url "https://github.com/liquidz/postal"
   :license {:name "MIT"
